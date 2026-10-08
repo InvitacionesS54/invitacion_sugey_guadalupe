@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Sugey Guadalupe — Mis XV Años</title>
+<meta name="description" content="Acompáñame a celebrar mis XV Años: sábado 19 de diciembre de 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23FBF8F4' stroke='%236E7B58'/%3E%3Ctext x='16' y='21' font-family='Georgia,serif' font-size='14' text-anchor='middle' fill='%236E7B58'%3ESG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   0. VARIABLES — personaliza aquí colores, tipografías y ritmo
+   ========================================================= */
+:root{
+  /* Paleta */
+  --bg:            #FBF8F4;   /* blanco roto / marfil cálido */
+  --bg-alt:        #F2ECDF;   /* arena cálida para secciones alternas */
+  --surface:       #FFFDF9;   /* superficie de tarjetas */
+  --ink:           #2B2A24;   /* casi negro cálido, texto principal */
+  --ink-soft:      #6E6858;   /* texto secundario */
+  --sage:          #6E7B58;   /* acento principal — verde salvia */
+  --sage-deep:     #4E5A3C;   /* salvia oscuro, hover / énfasis */
+  --gold:          #A9905E;   /* acento discreto dorado/bronce */
+  --line:          #DCD3BE;   /* líneas divisorias finas */
+  --white:         #FFFFFF;
+
+  /* Tipografía */
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body:    'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  /* Ritmo / geometría */
+  --max-w: 1120px;
+  --gap: clamp(1.25rem, 3vw, 2.5rem);
+  --radius: 2px;
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+/* =========================================================
+   1. RESET BASE
+   ========================================================= */
+*, *::before, *::after{ box-sizing: border-box; }
+html{
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+body{
+  margin:0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img{ max-width:100%; display:block; }
+button{ font-family: inherit; cursor:pointer; }
+a{ color: inherit; text-decoration: none; }
+h1,h2,h3,p{ margin:0; }
+ul{ margin:0; padding:0; list-style:none; }
+::selection{ background: var(--sage); color: var(--white); }
+
+/* foco visible accesible */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+  outline: 2px solid var(--sage);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   2. TIPOGRAFÍA GENERAL
+   ========================================================= */
+.eyebrow{
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--sage-deep);
+}
+.section-title{
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+.section-lede{
+  max-width: 46ch;
+  color: var(--ink-soft);
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+}
+.container{
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+/* separador ornamental reutilizable — motivo visual recurrente */
+.sprig-divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 0.9rem;
+  margin: 0 auto;
+  color: var(--gold);
+  opacity: 0.9;
+}
+.sprig-divider::before,
+.sprig-divider::after{
+  content:"";
+  height:1px;
+  width: clamp(28px, 8vw, 64px);
+  background: var(--line);
+}
+.sprig-divider svg{ width:16px; height:16px; flex-shrink:0; }
+
+/* =========================================================
+   3. UTILIDADES DE ANIMACIÓN AL SCROLL
+   ========================================================= */
+.reveal, .reveal-stagger > *{ opacity:1; transform:none; }  /* visible por defecto */
+.js-reveal .reveal{
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.js-reveal .reveal.is-visible{ opacity: 1; transform: translateY(0); }
+.js-reveal .reveal-stagger > *{
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.js-reveal .reveal-stagger.is-visible > *{ opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(1){ transition-delay: 0.05s; }
+.reveal-stagger.is-visible > *:nth-child(2){ transition-delay: 0.15s; }
+.reveal-stagger.is-visible > *:nth-child(3){ transition-delay: 0.25s; }
+.reveal-stagger.is-visible > *:nth-child(4){ transition-delay: 0.35s; }
+.reveal-stagger.is-visible > *:nth-child(5){ transition-delay: 0.45s; }
+.reveal-stagger.is-visible > *:nth-child(6){ transition-delay: 0.55s; }
+
+/* =========================================================
+   4. BOTONES
+   ========================================================= */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.55rem;
+  padding: 0.85rem 1.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--white);
+  border-radius: var(--radius);
+  transition: background 0.35s var(--ease), color 0.35s var(--ease), border-color 0.35s var(--ease), transform 0.35s var(--ease);
+  white-space: nowrap;
+}
+.btn:hover{ background: var(--sage-deep); border-color: var(--sage-deep); transform: translateY(-2px); }
+.btn svg{ width:15px; height:15px; }
+
+.btn-outline{
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+.btn-outline:hover{ background: var(--ink); color: var(--white); }
+
+.btn-sage{
+  background: var(--sage);
+  border-color: var(--sage);
+}
+.btn-sage:hover{ background: var(--sage-deep); border-color: var(--sage-deep); }
+
+.btn-block{ width:100%; }
+
+/* =========================================================
+   5. BOTÓN FLOTANTE DE MÚSICA
+   ========================================================= */
+.music-toggle{
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 60;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(251,248,244,0.85);
+  backdrop-filter: blur(6px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--sage-deep);
+  box-shadow: 0 4px 18px rgba(43,42,36,0.08);
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.music-toggle:hover{ border-color: var(--sage); }
+.music-toggle svg{ width:19px; height:19px; }
+.music-toggle .icon-pause{ display:none; }
+.music-toggle.is-playing .icon-play{ display:none; }
+.music-toggle.is-playing .icon-pause{ display:block; }
+.music-toggle.is-playing{ animation: pulse-ring 2.4s ease-out infinite; }
+@keyframes pulse-ring{
+  0%   { box-shadow: 0 0 0 0 rgba(110,123,88,0.35), 0 4px 18px rgba(43,42,36,0.08); }
+  70%  { box-shadow: 0 0 0 10px rgba(110,123,88,0), 0 4px 18px rgba(43,42,36,0.08); }
+  100% { box-shadow: 0 0 0 0 rgba(110,123,88,0), 0 4px 18px rgba(43,42,36,0.08); }
+}
+
+/* =========================================================
+   6. HERO
+   ========================================================= */
+.hero{
+  min-height: 100vh;
+  min-height: 100svh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  text-align:center;
+  padding: calc(12px + 3.5rem) calc(12px + 1.25rem) calc(12px + 1.25rem);
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(110,123,88,0.07), transparent 60%),
+    var(--bg);
+}
+.hero-frame{
+  position:absolute;
+  inset: 12px;
+  border: 1px solid var(--line);
+  pointer-events:none;
+}
+.hero-main{
+  flex: 1;
+  width: 100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.hero-eyebrow{
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  font-weight: 600;
+  color: var(--sage-deep);
+  margin-bottom: 1.6rem;
+  opacity:0;
+  animation: rise 1s var(--ease) 0.15s forwards;
+}
+.hero-names{
+  font-family: var(--font-display);
+  line-height: 0.95;
+}
+.hero-names .name{
+  display:block;
+  font-weight: 500;
+  font-size: clamp(3.2rem, 13vw, 7.2rem);
+  opacity:0;
+  animation: rise 1.1s var(--ease) forwards;
+}
+.hero-names .name-a{ animation-delay: 0.35s; }
+.hero-names .amp{
+  display:block;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  color: var(--gold);
+  margin: 0.15em 0;
+  opacity:0;
+  animation: rise 1.1s var(--ease) 0.6s forwards;
+}
+.hero-names .name-b{ animation-delay: 0.85s; }
+
+@keyframes rise{
+  from{ opacity:0; transform: translateY(18px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+.hero-quote{
+  margin-top: 2.1rem;
+  max-width: 34ch;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: var(--ink-soft);
+  opacity:0;
+  animation: rise 1.1s var(--ease) 1.1s forwards;
+}
+.hero-date{
+  margin-top: 2.3rem;
+  display:flex;
+  align-items:center;
+  gap:0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity:0;
+  animation: rise 1.1s var(--ease) 1.3s forwards;
+}
+.hero-date span.dot{ width:5px; height:5px; border-radius:50%; background: var(--gold); }
+
+.scroll-cue{
+  position:relative;
+  flex-shrink:0;
+  margin-top: 1.5rem;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.5rem;
+  color: var(--ink-soft);
+  opacity:0;
+  animation: rise 1s var(--ease) 1.6s forwards;
+}
+.scroll-cue span{ font-size: 0.65rem; letter-spacing:0.2em; text-transform:uppercase; }
+.scroll-cue .line{
+  width:1px; height:30px; background: var(--line); position:relative; overflow:hidden;
+}
+.scroll-cue .line::after{
+  content:""; position:absolute; top:-100%; left:0; width:100%; height:100%;
+  background: var(--sage); animation: drip 2s ease-in-out infinite;
+}
+@keyframes drip{
+  0%{ top:-100%; } 60%{ top:100%; } 100%{ top:100%; }
+}
+
+/* =========================================================
+   7. CUENTA REGRESIVA
+   ========================================================= */
+.countdown-section{
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
+  text-align:center;
+}
+.countdown-grid{
+  margin-top: 2.6rem;
+  display:flex;
+  justify-content:center;
+  flex-wrap: wrap;
+  row-gap: 1.5rem;
+}
+.countdown-unit{
+  padding: 0 clamp(1rem, 4vw, 2.6rem);
+  border-right: 1px solid var(--line);
+}
+.countdown-unit:last-child{ border-right:none; }
+.countdown-unit .num{
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.countdown-unit .label{
+  margin-top:0.4rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform:uppercase;
+  color: var(--ink-soft);
+}
+
+/* =========================================================
+   8. ITINERARIO
+   ========================================================= */
+.itinerary-section{ padding: clamp(3.5rem, 8vw, 6rem) 0; border-top: 1px solid var(--line); }
+.itinerary-head{ text-align:center; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+.itinerary-head .section-title, .itinerary-head .section-lede{ margin-inline:auto; }
+.itinerary-head .eyebrow{ display:block; margin-bottom:0.7rem; }
+
+.timeline{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 2.2rem;
+  position: relative;
+}
+.event-card{
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: clamp(1.75rem, 4vw, 2.6rem);
+  position:relative;
+}
+.event-card .icon-wrap{
+  width:46px; height:46px;
+  border-radius:50%;
+  border:1px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  color: var(--gold);
+  margin-bottom:1.4rem;
+}
+.event-card .icon-wrap svg{ width:20px; height:20px; }
+.event-card .event-time{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--sage-deep);
+  margin-bottom:0.3rem;
+}
+.event-card h3{
+  font-family: var(--font-display);
+  font-weight:500;
+  font-size: 1.6rem;
+  margin-bottom:0.35rem;
+}
+.event-card .event-address{
+  color: var(--ink-soft);
+  font-size:0.92rem;
+  margin-bottom:1.5rem;
+}
+.event-card .event-actions{ display:flex; flex-wrap:wrap; gap:0.7rem; }
+.event-card .event-actions .btn{ padding:0.65rem 1.15rem; font-size:0.7rem; }
+
+@media (min-width: 760px){
+  .timeline{ grid-template-columns: 1fr 1px 1fr; align-items:start; }
+  .timeline-rule{
+    background: var(--line);
+    align-self: stretch;
+    position:relative;
+  }
+  .timeline-rule::before{
+    content:"";
+    position:absolute; top:50%; left:50%;
+    width:9px; height:9px; border-radius:50%;
+    background: var(--gold);
+    transform: translate(-50%,-50%);
+  }
+}
+
+/* =========================================================
+   8b. CORTE DE HONOR / FAMILIA
+   ========================================================= */
+.family-section{ padding: clamp(3.5rem, 8vw, 6rem) 0; background: var(--bg-alt); text-align:center; }
+.family-head{ margin-bottom: clamp(2.2rem, 5vw, 3.2rem); }
+.family-head .eyebrow{ display:block; margin-bottom:0.7rem; }
+.family-head .section-lede{ margin: 0.9rem auto 1.6rem; }
+.honor-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+  max-width: 980px;
+  margin-inline:auto;
+}
+.honor-group{
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: clamp(1.75rem, 4vw, 2.4rem) 1.5rem;
+}
+.honor-group h3{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.35rem;
+  color: var(--sage-deep);
+  padding-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--line);
+}
+.honor-group li{
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.honor-group li + li{ margin-top: 1.1rem; }
+.honor-group li + li::before{
+  content:"";
+  display:block;
+  width:5px; height:5px; border-radius:50%;
+  background: var(--gold);
+  margin: 0 auto 1.1rem;
+}
+@media (min-width: 860px){
+  .honor-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+
+/* =========================================================
+   9. CÓDIGO DE VESTIMENTA
+   ========================================================= */
+.dresscode-section{ padding: clamp(3.5rem, 8vw, 6rem) 0; text-align:center; }
+.dresscode-section .section-title, .dresscode-section .section-lede{ margin-inline:auto; }
+.dresscode-badge{
+  display:inline-block;
+  margin: 1.6rem 0 2rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  color: var(--sage-deep);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding: 0.6rem 2.2rem;
+}
+.dress-icons{ display:flex; justify-content:center; gap: clamp(1.5rem, 6vw, 2.75rem); }
+.dress-icon{
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: var(--surface);
+  color: var(--sage);
+  display:flex; align-items:center; justify-content:center;
+}
+.dress-icon svg{ width: 52px; height: 52px; }
+.dress-icon .gold{ stroke: var(--gold); }
+
+/* =========================================================
+   10. LLUVIA DE SOBRES
+   ========================================================= */
+.gifts-section{ padding: clamp(3.5rem, 8vw, 6rem) 0; background: var(--bg-alt); text-align:center; }
+.gifts-section .section-title, .gifts-section .section-lede{ margin-inline:auto; }
+.sobre-card{
+  max-width: 600px;
+  margin: 2.6rem auto 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: clamp(2rem, 6vw, 3rem) clamp(1.5rem, 6vw, 3rem);
+}
+.sobre-card .icon-wrap{
+  width:56px; height:56px;
+  margin: 0 auto 1.5rem;
+  border-radius:50%;
+  border:1px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  color: var(--gold);
+}
+.sobre-card .icon-wrap svg{ width:24px; height:24px; }
+.sobre-card p{ color: var(--ink-soft); font-size: 0.95rem; }
+.sobre-card p + p{ margin-top: 1rem; }
+.sobre-card .sprig-divider{ margin: 1.8rem auto; }
+.sobre-card .sobre-quote{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+  color: var(--sage-deep);
+  line-height: 1.4;
+}
+
+/* =========================================================
+   11. GALERÍA
+   ========================================================= */
+.gallery-section{ padding: clamp(3.5rem, 8vw, 6rem) 0; text-align:center; }
+.gallery-section .section-title, .gallery-section .section-lede{ margin-inline:auto; }
+.gallery-grid{
+  margin-top: 2.4rem;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 150px;
+  gap: 0.6rem;
+  text-align:left;
+}
+@media (min-width:640px){
+  .gallery-grid{ grid-template-columns: repeat(4, 1fr); grid-auto-rows: 170px; }
+  .gallery-grid .span-2{ grid-column: span 2; }
+  .gallery-grid .row-2{ grid-row: span 2; }
+}
+.gallery-item{
+  position:relative;
+  border:none; padding:0; margin:0;
+  overflow:hidden;
+  background:
+    linear-gradient(155deg, #E4E0CF, #D8DCC4 45%, #C9C6AE);
+  color: var(--sage-deep);
+}
+.gallery-item:nth-child(3n+1){ background: linear-gradient(155deg,#E9E3D6,#D9CFB8 55%,#C7B98F); }
+.gallery-item:nth-child(3n+2){ background: linear-gradient(155deg,#E2E3D6,#C9D0B6 55%,#A9B78C); }
+.gallery-item img{ width:100%; height:100%; object-fit:cover; }
+.gallery-item .placeholder-content{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.5rem;
+  transition: transform 0.6s var(--ease);
+}
+.gallery-item .placeholder-content svg{ width:26px; height:26px; opacity:0.7; }
+.gallery-item .placeholder-content span{ font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; opacity:0.75; }
+.gallery-item:hover .placeholder-content{ transform: scale(1.06); }
+
+.lightbox{
+  position: fixed; inset:0; z-index: 100;
+  background: rgba(30,28,22,0.92);
+  display:flex; align-items:center; justify-content:center;
+  padding: 2rem;
+}
+.lightbox[hidden]{ display:none; }
+.lightbox-inner{
+  max-width: 720px; width:100%;
+  text-align:center;
+}
+.lightbox-visual{
+  width:100%; aspect-ratio: 4/3;
+  background: linear-gradient(155deg,#E4E0CF,#C9C6AE);
+  display:flex; align-items:center; justify-content:center;
+  color: var(--sage-deep);
+}
+.lightbox-visual img{ width:100%; height:100%; object-fit:cover; }
+.lightbox-caption{ margin-top:1rem; color:#EFE9DA; font-family: var(--font-display); font-style:italic; font-size:1.1rem; }
+.lightbox-close{
+  position:absolute; top:1.5rem; right:1.5rem;
+  background:none; border:1px solid rgba(255,255,255,0.4); color:#fff;
+  width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+}
+.lightbox-close svg{ width:16px; height:16px; }
+
+/* =========================================================
+   12. RSVP
+   ========================================================= */
+.rsvp-section{ padding: clamp(3.5rem, 8vw, 6rem) 0; background: var(--bg-alt); }
+.rsvp-card{
+  max-width: 560px;
+  margin-inline: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: clamp(2rem, 6vw, 3.2rem) clamp(1.5rem, 6vw, 3rem);
+  text-align: center;
+}
+.rsvp-card .sprig-divider{ margin: 1.5rem auto; }
+.rsvp-card p{ max-width: 42ch; margin: 0 auto 2rem; color: var(--ink-soft); font-size: 0.98rem; }
+.rsvp-card .btn{ white-space: normal; text-align: center; line-height: 1.4; padding: 1rem 1.6rem; }
+.rsvp-card .btn svg{ width: 18px; height: 18px; flex-shrink: 0; }
+
+/* =========================================================
+   13. FOOTER
+   ========================================================= */
+.site-footer{
+  padding: clamp(3rem, 7vw, 4.5rem) 0 2.5rem;
+  text-align:center;
+}
+.site-footer .monogram{
+  font-family: var(--font-display);
+  font-style:italic;
+  font-size: clamp(1.6rem,4vw,2.2rem);
+  color: var(--sage-deep);
+  margin-bottom: 0.8rem;
+}
+.site-footer p{ font-size:0.78rem; color: var(--ink-soft); }
+.site-footer .credit{ margin-top:1.6rem; font-size:0.68rem; color: var(--line); }
+
+/* =========================================================
+   14. RESPONSIVE — ajustes generales tablet/desktop
+   ========================================================= */
+@media (min-width: 900px){
+  .hero-quote{ max-width: 40ch; }
+}
+
+/* Contenedor del icono en las tarjetas de la corte de honor */
+.honor-group .icon-wrap {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1.2rem;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  background: rgba(251, 248, 244, 0.6);
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.honor-group .icon-wrap svg {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.4s var(--ease);
+}
+
+/* Animación sutil al pasar el mouse por la tarjeta */
+.honor-group:hover .icon-wrap {
+  transform: translateY(-4px) scale(1.05);
+  border-color: var(--sage);
+  color: var(--sage-deep);
+  box-shadow: 0 6px 16px rgba(110, 123, 88, 0.15);
+}
+
+/* Animación continua y suave para la llama de la vela */
+@keyframes flame-flicker {
+  0%, 100% { transform: scale(1) translateY(0); opacity: 0.95; }
+  50% { transform: scale(1.12) translateY(-1px); opacity: 1; }
+}
+
+.flame-anim {
+  transform-origin: center bottom;
+  animation: flame-flicker 2.2s ease-in-out infinite;
+}
+
+</style>
+<script>
+/* Activa el sistema de animaciones solo si el navegador lo soporta y no hay 'reducir movimiento' */
+(function(){
+  if ('IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)){
+    document.documentElement.classList.add('js-reveal');
+  }
+})();
+</script>
+</head>
+<body>
+
+<!-- ============ AUDIO DE FONDO ============ -->
+<!-- Coloca tu archivo de música en assets/musica-fondo.mp3 (placeholder). -->
+<audio id="bg-audio" loop preload="none">
+  <source src="https://res.cloudinary.com/dwf9jiy08/video/upload/v1791211017/audio1_mid3v6.mp3" type="audio/mpeg">
+</audio>
+<button id="music-toggle" class="music-toggle" type="button" aria-label="Reproducir música de fondo" aria-pressed="false">
+  <svg class="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+  <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="17" y2="20"/></svg>
+</button>
+
+<main>
+
+  <!-- ============ 1. HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="hero-frame" aria-hidden="true"></div>
+    <div class="hero-main">
+    <p class="hero-eyebrow">Mis XV Años</p>
+    <h1 class="hero-names">
+      <span class="name name-a">Sugey</span>
+      <span class="amp">Guadalupe</span>
+    </h1>
+    <p class="hero-quote">Con la bendición de Dios y el cariño de mi familia, quiero que seas parte del día más especial de mi vida.</p>
+    <p class="hero-date"><span class="dot" aria-hidden="true"></span>Sábado 19 de diciembre de 2026</p>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">
+      <span>Descubre más</span>
+      <span class="line"></span>
+    </div>
+  </section>
+
+  <!-- ============ 2. CUENTA REGRESIVA ============ -->
+  <section class="countdown-section reveal">
+    <div class="container">
+      <p class="eyebrow" style="margin-bottom:0.6rem;">Falta poco</p>
+      <h2 class="section-title" style="margin-inline:auto;max-width:20ch;">La cuenta regresiva ya comenzó</h2>
+      <div class="countdown-grid" id="countdown" role="timer" aria-live="off">
+        <div class="countdown-unit"><div class="num" id="cd-days">00</div><div class="label">Días</div></div>
+        <div class="countdown-unit"><div class="num" id="cd-hours">00</div><div class="label">Horas</div></div>
+        <div class="countdown-unit"><div class="num" id="cd-minutes">00</div><div class="label">Minutos</div></div>
+        <div class="countdown-unit"><div class="num" id="cd-seconds">00</div><div class="label">Segundos</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. ITINERARIO ============ -->
+  <section class="itinerary-section reveal" id="itinerario">
+    <div class="container">
+      <div class="itinerary-head">
+        <span class="eyebrow">Itinerario</span>
+        <h2 class="section-title" style="margin-top:0.6rem;">Misa &amp; Fiesta</h2>
+        <p class="section-lede" style="margin-top:0.9rem;">Estos son los momentos y lugares donde me encantaría compartir contigo este día.</p>
+      </div>
+
+      <div class="timeline reveal-stagger">
+        <!-- Ceremonia -->
+        <article class="event-card">
+          <div class="icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6"/><path d="M8 8l4-5 4 5"/><path d="M5 21V11l7-4 7 4v10"/><path d="M9 21v-6h6v6"/></svg>
+          </div>
+          <p class="event-time">5:30 de la tarde · 17:30 hrs</p>
+          <h3>Misa de XV años</h3>
+          <p class="event-address">Iglesia Santa Rosa de Lima<br>Sector &quot;La Rinconada&quot;, Ría. Las Flores 1ra. Secc.</p>
+          <div class="event-actions">
+            <a class="btn btn-outline" target="_blank" rel="noopener" href="https://maps.app.goo.gl/TKpkjxo7r2GotN5w6">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Ver mapa
+            </a>
+            <button class="btn btn-sage" type="button" data-ics="ceremonia">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="1"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Agendar
+            </button>
+          </div>
+        </article>
+
+        <div class="timeline-rule" aria-hidden="true"></div>
+
+        <!-- Recepción -->
+        <article class="event-card">
+          <div class="icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8l-1 9a3 3 0 0 1-6 0L8 3z"/><path d="M12 14v7"/><path d="M9 21h6"/></svg>
+          </div>
+          <p class="event-time">7:00 de la tarde · 19:00 hrs</p>
+          <h3>Recepción y fiesta</h3>
+          <p class="event-address">Salón Imperial<br>Libramiento a Dos Bocas, antes de La Quinta</p>
+          <div class="event-actions">
+            <a class="btn btn-outline" target="_blank" rel="noopener" href="https://maps.app.goo.gl/YoRr56jhCZsM8eb36">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Ver mapa
+            </a>
+            <button class="btn btn-sage" type="button" data-ics="recepcion">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="1"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Agendar
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3b. CORTE DE HONOR / FAMILIA ============ -->
+  <section class="family-section reveal" id="familia">
+    <div class="container">
+      <div class="family-head">
+        <span class="eyebrow">Corte de honor</span>
+        <h2 class="section-title" style="margin-top:0.6rem;">Quienes me acompañan</h2>
+        <p class="section-lede">Con gratitud y amor, presento a las personas que hacen posible este día tan especial.</p>
+        <div class="sprig-divider" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3c-3 3-3 7 0 10 3-3 3-7 0-10z"/><path d="M12 13v8"/></svg>
+        </div>
+      </div>
+
+      <div class="honor-grid reveal-stagger">
+        <!-- Mis Padres -->
+        <article class="honor-group">
+          <div class="icon-wrap" aria-hidden="true">
+            <!-- Icono Corazón Familiar / Amor paternal -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+            </svg>
+          </div>
+          <h3>Mis padres</h3>
+          <ul>
+            <li>Sr. Antonio Pérez Domínguez</li>
+            <li>Sra. Estrella López Domínguez</li>
+          </ul>
+        </article>
+
+        <!-- Padrinos de Velación -->
+        <article class="honor-group">
+          <div class="icon-wrap" aria-hidden="true">
+            <!-- Icono Cirio / Vela de Velación con llama animada -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path class="flame-anim" d="M12 2c-.8 1.8-1.5 2.7-1.5 4a1.5 1.5 0 0 0 3 0c0-1.3-.7-2.2-1.5-4z" fill="currentColor" stroke="none"/>
+              <path d="M7 10h10v11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10z"/>
+              <line x1="12" y1="6" x2="12" y2="10"/>
+              <path d="M5 22h14"/>
+            </svg>
+          </div>
+          <h3>Padrinos de velación</h3>
+          <ul>
+            <li>Sr. Francisco López Domínguez</li>
+            <li>Sra. Lesvia del Carmen Angulo Angulo</li>
+          </ul>
+        </article>
+
+        <!-- Padrinos de Brindis -->
+        <article class="honor-group">
+          <div class="icon-wrap" aria-hidden="true">
+            <!-- Icono Copas de Brindis -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 22h8"/>
+              <path d="M7 10a5 5 0 0 0 4.9 4h.2A5 5 0 0 0 17 10V3H7v7z"/>
+              <path d="M12 14v8"/>
+              <line x1="7" y1="7" x2="17" y2="7"/>
+            </svg>
+          </div>
+          <h3>Padrinos de brindis</h3>
+          <ul>
+            <li>Ing. Deisy del Carmen Carrillo López</li>
+            <li>Lic. Geny Esmeralda De la cruz De la cruz</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. CÓDIGO DE VESTIMENTA ============ -->
+  <section class="dresscode-section reveal" id="vestimenta">
+    <div class="container">
+      <h2 class="section-title">Código de vestimenta</h2>
+      <p class="dresscode-badge">Formal</p>
+      <div class="dress-icons">
+        <div class="dress-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Saco o traje"><path d="M22 8L9 14 6 40l8 1 2-17v32h32V24l2 17 8-1-3-26-13-6"/><path d="M22 8l3 14 7 10 7-10 3-14"/><path d="M32 32v24"/><path d="M38 44h6"/><circle cx="32" cy="42" r="0.9" fill="currentColor"/><path class="gold" d="M32 12l2 4-1 14-1 3-1-3-1-14z"/></svg></div>
+        <div class="dress-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Vestido de gala"><path d="M26 6l-4 16 5 14"/><path d="M38 6l4 16-5 14"/><path d="M22 22q5 5 10 0 5 5 10 0"/><path d="M27 36c-4 10-12 18-18 24q23-5 46 0C49 54 41 46 37 36"/><path d="M29 37c-2 8-6 14-9 20"/><path d="M35 37c2 8 6 14 9 20"/><path d="M32 38v18"/><path class="gold" d="M26 36h12"/></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. LLUVIA DE SOBRES ============ -->
+  <section class="gifts-section reveal" id="regalos">
+    <div class="container">
+      <span class="eyebrow">Lluvia de sobres</span>
+      <h2 class="section-title" style="margin-top:0.6rem;">Tu presencia es mi mayor regalo</h2>
+      <p class="section-lede" style="margin-top:0.9rem;">Si deseas tener un detalle conmigo, te cuento cómo hacerlo.</p>
+
+      <div class="sobre-card">
+        <div class="icon-wrap" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
+        </div>
+        <p>Una tradición muy bonita de nuestras fiestas es la lluvia de sobres: el día del evento encontrarás un buzón especial donde podrás depositar un sobre con tu presente en efectivo.</p>
+        <p>Cada detalle será recibido con todo mi cariño y me ayudará a comenzar esta nueva etapa de mi vida.</p>
+        <div class="sprig-divider" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3c-3 3-3 7 0 10 3-3 3-7 0-10z"/><path d="M12 13v8"/></svg>
+        </div>
+        <p class="sobre-quote">Gracias por acompañarme y por hacer de este día un recuerdo inolvidable.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ============ 7. RSVP ============ -->
+  <section class="rsvp-section reveal" id="confirmar">
+    <div class="container">
+      <article class="rsvp-card">
+        <h2 class="section-title">Confirmación de asistencia</h2>
+        <div class="sprig-divider" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3c-3 3-3 7 0 10 3-3 3-7 0-10z"/><path d="M12 13v8"/></svg>
+        </div>
+        <p>Tu cariño y tu compañía hacen de este día un recuerdo inolvidable. Te agradezco de corazón que confirmes tu presencia para poder brindarte la mejor atención.</p>
+        <a class="btn btn-sage" id="rsvp-whatsapp" href="https://wa.me/529331181017?text=%C2%A1Hola%21%20Confirmo%20con%20mucho%20gusto%20mi%20asistencia%20a%20los%20XV%20A%C3%B1os%20de%20Sugey%20Guadalupe%20el%2019%20de%20diciembre%20de%202026." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.709.3 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.123-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Confirmar asistencia por WhatsApp
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="sprig-divider" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3c-3 3-3 7 0 10 3-3 3-7 0-10z"/><path d="M12 13v8"/></svg>
+    </div>
+    <p class="monogram">S G P</p>
+    <p>Sugey Guadalupe Pérez López</p>
+    <p style="margin-top:0.3rem;">Mis XV Años · 19 de diciembre de 2026</p>
+    <p class="credit">Hecho con cariño para mi gran día.</p>
+  </footer>
+
+</main>
+
+<!-- ============ LIGHTBOX GALERÍA ============ -->
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Cerrar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+  </button>
+  <div class="lightbox-inner">
+    <div class="lightbox-visual" id="lightbox-visual"></div>
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =========================================================
+     CONFIGURACIÓN GENERAL — personaliza aquí
+     ========================================================= */
+  const CONFIG = {
+    eventDateISO: "2026-12-19T17:30:00",    // fecha y hora de la misa
+    whatsappPhone: "529331181017",          // CAMBIA ESTE NÚMERO: formato internacional sin '+' ni espacios
+    celebrant: "Sugey Guadalupe Pérez López"
+  };
+
+  /* =========================================================
+     1. ANIMACIONES AL HACER SCROLL (IntersectionObserver)
+     ========================================================= */
+  // Incluye .reveal-stagger (antes nunca se observaba y sus hijos quedaban invisibles)
+  const revealEls = document.querySelectorAll(".reveal, .reveal-stagger");
+  function showAll(){ revealEls.forEach(el => el.classList.add("is-visible")); }
+  if ("IntersectionObserver" in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: "0px 0px -6% 0px" });
+    revealEls.forEach(el => io.observe(el));
+    // Red de seguridad: pase lo que pase, todo el contenido queda visible
+    setTimeout(showAll, 3500);
+    window.addEventListener("load", () => setTimeout(showAll, 3500));
+  } else {
+    showAll();
+  }
+
+  /* =========================================================
+     2. CUENTA REGRESIVA
+     ========================================================= */
+  const eventDate = new Date(CONFIG.eventDateISO).getTime();
+  const elDays = document.getElementById("cd-days");
+  const elHours = document.getElementById("cd-hours");
+  const elMinutes = document.getElementById("cd-minutes");
+  const elSeconds = document.getElementById("cd-seconds");
+
+  function pad(n){ return String(n).padStart(2, "0"); }
+
+  function updateCountdown(){
+    const now = Date.now();
+    let diff = eventDate - now;
+    if (diff < 0) diff = 0;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    if (elDays) elDays.textContent = pad(days);
+    if (elHours) elHours.textContent = pad(hours);
+    if (elMinutes) elMinutes.textContent = pad(minutes);
+    if (elSeconds) elSeconds.textContent = pad(seconds);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  /* =========================================================
+     3. CONTROL DE MÚSICA DE FONDO
+     ========================================================= */
+  const audio = document.getElementById("bg-audio");
+  const musicBtn = document.getElementById("music-toggle");
+
+  musicBtn.addEventListener("click", () => {
+    const isPlaying = musicBtn.classList.contains("is-playing");
+    if (isPlaying){
+      audio.pause();
+      musicBtn.classList.remove("is-playing");
+      musicBtn.setAttribute("aria-pressed", "false");
+      musicBtn.setAttribute("aria-label", "Reproducir música de fondo");
+    } else {
+      const playPromise = audio.play();
+      if (playPromise !== undefined){
+        playPromise.then(() => {
+          musicBtn.classList.add("is-playing");
+          musicBtn.setAttribute("aria-pressed", "true");
+          musicBtn.setAttribute("aria-label", "Pausar música de fondo");
+        }).catch(() => {
+          // El archivo de audio placeholder no existe o el navegador bloqueó la reproducción.
+          // Sustituye assets/musica-fondo.mp3 por tu pista real.
+          console.warn("No se pudo reproducir el audio. Verifica assets/musica-fondo.mp3");
+        });
+      }
+    }
+  });
+
+  /* =========================================================
+     4. AGREGAR AL CALENDARIO (.ics descargable)
+     ========================================================= */
+  const EVENTS = {
+    ceremonia: {
+      title: "Misa de XV Años — Sugey Guadalupe",
+      start: "20261219T173000",
+      end:   "20261219T183000",
+      location: "Iglesia Santa Rosa de Lima, sector La Rinconada, Ría. Las Flores 1ra. Secc.",
+      description: "Misa de los XV Años de " + CONFIG.celebrant + ". Hora: 17:30 hrs."
+    },
+    recepcion: {
+      title: "Fiesta de XV Años — Sugey Guadalupe",
+      start: "20261219T190000",
+      end:   "20261220T010000",
+      location: "Salón Imperial, Libramiento a Dos Bocas, antes de La Quinta",
+      description: "Recepción y fiesta de los XV Años de " + CONFIG.celebrant + ". Hora: 19:00 hrs."
+    }
+  };
+
+  // Escapa caracteres especiales del formato iCalendar (RFC 5545)
+  function icsEscape(s){
+    return String(s).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+  }
+
+  function buildICS(evt){
+    return [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//Invitacion XV Anos//ES",
+      "BEGIN:VEVENT",
+      "UID:" + Date.now() + "@invitacion-xv",
+      "DTSTAMP:" + new Date().toISOString().replace(/[-:]/g,"").split(".")[0] + "Z",
+      "DTSTART:" + evt.start,
+      "DTEND:" + evt.end,
+      "SUMMARY:" + icsEscape(evt.title),
+      "LOCATION:" + icsEscape(evt.location),
+      "DESCRIPTION:" + icsEscape(evt.description),
+      "END:VEVENT",
+      "END:VCALENDAR"
+    ].join("\r\n");
+  }
+
+  document.querySelectorAll("[data-ics]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const key = btn.getAttribute("data-ics");
+      const evt = EVENTS[key];
+      if (!evt) return;
+      const icsContent = buildICS(evt);
+      const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = key + "-xv-sugey.ics";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    });
+  });
+
+  /* =========================================================
+     5. GALERÍA — LIGHTBOX
+     ========================================================= */
+  const galleryItems = document.querySelectorAll(".gallery-item");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxVisual = document.getElementById("lightbox-visual");
+  const lightboxCaption = document.getElementById("lightbox-caption");
+  const lightboxClose = document.getElementById("lightbox-close");
+  let lastFocused = null;
+
+  function openLightbox(item){
+    const src = item.getAttribute("data-src");
+    const caption = item.getAttribute("data-caption") || "";
+    lightboxVisual.innerHTML = src
+      ? '<img src="' + src + '" alt="' + caption.replace(/"/g,"&quot;") + '">'
+      : item.querySelector(".placeholder-content").outerHTML;
+    lightboxCaption.textContent = caption;
+    lastFocused = document.activeElement;
+    lightbox.hidden = false;
+    lightboxClose.focus();
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox(){
+    lightbox.hidden = true;
+    document.body.style.overflow = "";
+    if (lastFocused) lastFocused.focus();
+  }
+
+  galleryItems.forEach(item => {
+    item.addEventListener("click", () => openLightbox(item));
+  });
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !lightbox.hidden) closeLightbox();
+  });
+
+  /* =========================================================
+     6. RSVP → WHATSAPP (apertura directa con mensaje predeterminado)
+     ========================================================= */
+  const rsvpBtn = document.getElementById("rsvp-whatsapp");
+  const RSVP_TEXT = "¡Hola! Confirmo con mucho gusto mi asistencia a los XV Años de Sugey Guadalupe el 19 de diciembre de 2026.";
+  if (rsvpBtn){
+    const waUrl = "https://wa.me/" + CONFIG.whatsappPhone + "?text=" + encodeURIComponent(RSVP_TEXT);
+    rsvpBtn.href = waUrl;
+    rsvpBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const w = window.open(waUrl, "_blank", "noopener");
+      if (!w) window.location.href = waUrl;   // si el navegador bloquea la ventana nueva
+    });
+  }
+
+})();
+</script>
+</body>
+</html>
